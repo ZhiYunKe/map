@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5f3ed" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#142721" media="(prefers-color-scheme: dark)">
+<meta name="description" content="沪上漫游 · 上海口袋地图：2026年10月2日至5日的上海旅行手册，含城市三维沙盘、逐日行程、地铁交通与出发清单。">
+<meta name="author" content="沪上漫游">
+<meta name="robots" content="index,follow">
+
+<!-- Open Graph / 社交分享 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="沪上漫游 · 你的上海口袋地图">
+<meta property="og:description" content="10月2日至5日上海旅行手册：城市沙盘、逐日行程、地铁交通与预约清单。">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="沪上漫游 · 你的上海口袋地图">
+<meta name="twitter:description" content="10月2日至5日上海旅行手册：城市沙盘、逐日行程、地铁交通与预约清单。">
+
+<title>沪上漫游 · 你的上海口袋地图</title>
+<link rel="canonical" href="./index.html">
+<link rel="icon" type="image/svg+xml" href="assets-mark.svg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-mobile-view="map">
+
+<a class="skip-link" href="#itinerary">跳至行程</a>
+
+<header class="header">
+  <a class="brand" href="#" aria-label="沪上漫游首页">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M6 32V23h5v9M16 32V12l5-7 5 7v20M31 32V18h4v14M3 36h35"/></svg>
+    <span>沪上漫游<small>SHANGHAI POCKET ATLAS</small></span>
+  </a>
+  <div class="header-center"><span class="tiny-dot"></span><span>一份只属于你的城市漫游手册</span></div>
+  <div class="header-actions">
+    <span class="trip-date">02 — 05 OCT <small>2026</small></span>
+    <button class="theme-button" id="theme-btn" aria-pressed="false" title="切换日夜景">
+      <span id="theme-icon" aria-hidden="true"></span><span id="theme-text">夜景</span>
+    </button>
+    <button class="button primary" id="booking-btn"><span data-icon="checklist"></span>出发清单 <span class="count">0/4</span></button>
+  </div>
+</header>
+
+<div class="mobile-dates day-tabs" role="group" aria-label="选择日期">
+  <button data-day="all" class="active" aria-pressed="true">全程</button>
+  <button data-day="3" aria-pressed="false">10.03 <small>浦江</small></button>
+  <button data-day="4" aria-pressed="false">10.04 <small>浦西</small></button>
+  <button data-day="5" aria-pressed="false">10.05 <small>返程</small></button>
+</div>
+
+<div class="workspace">
+  <aside class="sidebar" id="itinerary">
+    <div class="sidebar-top">
+      <div class="trip-intro">
+        <p class="eyebrow">YOUR SHANGHAI GETAWAY</p>
+        <h1>上海，慢慢看。</h1>
+        <p>10月2日晚抵达 <span>·</span> 两天漫游，三晚好梦</p>
+      </div>
+      <button class="hotel-card" id="hotel-btn">
+        <span class="hotel-monogram">JI</span>
+        <span><small>此行落脚点</small><strong>全季 · 浦东大道店</strong><em><i class="metro-dot">14</i>源深路站 · 步行约5分钟</em></span>
+        <span data-icon="arrow-up-right"></span>
+      </button>
+      <div class="day-tabs desktop-dates" role="group" aria-label="选择行程日期">
+        <button data-day="all" class="active" aria-pressed="true">全程</button>
+        <button data-day="3" aria-pressed="false">10.03</button>
+        <button data-day="4" aria-pressed="false">10.04</button>
+        <button data-day="5" aria-pressed="false">10.05</button>
+      </div>
+    </div>
+    <div class="sidebar-scroll">
+      <div class="route-heading">
+        <div><p class="eyebrow" id="route-kicker">THE JOURNEY</p><h2 id="route-title">三日行程，一眼看懂</h2></div>
+        <span id="route-count" class="route-count">10处地点</span>
+      </div>
+      <div id="day-insight" class="day-insight"></div>
+      <div id="timeline" class="timeline"></div>
+    </div>
+    <button class="flight-card" id="flight-btn">
+      <span class="flight-icon" data-icon="plane"></span>
+      <span><small>10.05 返程青岛 · 虹桥 T2</small><strong>08:40 <em>计划起飞</em></strong><span class="flight-note">05:30离店 · 首班时刻需复核</span></span>
+      <span data-icon="chevron-right"></span>
+    </button>
+  </aside>
+
+  <main class="main" id="explore">
+    <div class="map-heading">
+      <div>
+        <p class="eyebrow">A CITY TO WANDER, A JOURNEY TO KEEP</p>
+        <h2 id="map-title">沿着黄浦江，收藏上海。</h2>
+        <p id="map-subtitle">从云端天际线到梧桐街巷，把想看的上海串成一条路。</p>
+      </div>
+      <div class="city-stamp" aria-hidden="true"><strong>上海</strong><span>31°N · 121°E</span></div>
+    </div>
+
+    <section class="map-stage" aria-label="上海旅行三维沙盘">
+      <div id="scene" class="scene" aria-label="拖动旋转、滚轮缩放、点击地标查看详情"></div>
+      <div id="loading" class="loading"><span class="loader"></span><strong>正在搭建你的上海</strong><span>将江岸、街巷与回忆放进口袋</span></div>
+      <div class="map-chips" role="group" aria-label="按日期筛选路线">
+        <button data-route="3"><i class="orange"></i>03 <span>浦江</span></button>
+        <button data-route="4"><i class="green"></i>04 <span>浦西</span></button>
+        <button data-route="5"><i class="blue"></i>05 <span>返程</span></button>
+        <span class="schematic">示意沙盘</span>
+      </div>
+      <div class="map-controls" role="group" aria-label="沙盘视角控制">
+        <button class="icon-button" id="zoom-in" aria-label="放大沙盘" title="放大" data-icon="plus"></button>
+        <button class="icon-button" id="zoom-out" aria-label="缩小沙盘" title="缩小" data-icon="minus"></button>
+        <span></span>
+        <button class="icon-button" id="rotate-left" aria-label="向左旋转沙盘" title="旋转" data-icon="rotate"></button>
+        <button class="icon-button" id="top-view" aria-pressed="false" aria-label="切换俯视视角" title="俯视" data-icon="layers"></button>
+        <button class="icon-button" id="labels-btn" aria-pressed="true" aria-label="显示地标标签" title="显示／隐藏标签" data-icon="pin"></button>
+        <button class="icon-button" id="reset-view" aria-label="恢复全景" title="恢复全景" data-icon="scan"></button>
+      </div>
+      <div class="map-corner"><button class="icon-button" id="fullscreen-btn" aria-label="全屏查看沙盘" title="全屏" data-icon="expand"></button></div>
+      <div class="map-bottom">
+        <div class="map-hint"><span data-icon="drag"></span><p>拖动探索 <span>·</span> 点击地标</p></div>
+        <div class="tour-control">
+          <button id="tour-play" class="tour-play" aria-label="开始逐站漫游" aria-pressed="false"><span data-icon="play"></span></button>
+          <div class="tour-copy">
+            <strong id="tour-title">让行程在眼前展开</strong>
+            <span id="tour-subtitle">逐站漫游 · 约半分钟看完一天</span>
+            <div class="tour-progress" aria-hidden="true"><i id="tour-progress-fill"></i></div>
+          </div>
+          <button class="icon-button" id="tour-prev" aria-label="上一站" title="上一站" data-icon="chevron-left"></button>
+          <button class="icon-button" id="tour-next" aria-label="下一站" title="下一站" data-icon="chevron-right"></button>
+        </div>
+        <button class="capture-button" id="capture-btn" title="保存当前沙盘图片"><span data-icon="camera"></span><span>存张明信片</span></button>
+      </div>
+    </section>
+
+    <section class="place-detail" id="place-detail" aria-live="polite">
+      <div class="place-art" id="place-art" aria-hidden="true"></div>
+      <div class="detail-primary">
+        <p class="eyebrow" id="place-kicker">YOUR BASE IN SHANGHAI</p>
+        <h2 id="place-name">全季 · 浦东大道店</h2>
+        <p id="place-subtitle"></p>
+        <div class="place-tags" id="place-tags"></div>
+      </div>
+      <div class="detail-facts">
+        <div><span class="fact-label" data-icon="clock"></span><div><small>计划时段</small><strong id="place-time"></strong></div></div>
+        <div><span class="fact-label" data-icon="hourglass"></span><div><small>等待预留</small><strong id="place-wait"></strong></div></div>
+      </div>
+      <div class="detail-actions">
+        <button class="button primary" id="detail-more">交通与入场 <span data-icon="arrow-up-right"></span></button>
+        <a id="navigate-link" class="button secondary" target="_blank" rel="noopener noreferrer"><span data-icon="pin"></span>地图导航</a>
+      </div>
+      <div class="route-preview">
+        <span data-icon="metro"></span>
+        <div id="transport-preview"></div>
+        <button id="transport-more" aria-label="查看完整交通路线">路线详情 <span data-icon="arrow-up-right"></span></button>
+      </div>
+    </section>
+
+    <footer class="page-footnote">
+      <span><i></i>非等比例艺术沙盘 · 交通与排队为规划预留</span>
+      <button id="sources-btn">信息来源 <span data-icon="arrow-up-right"></span></button>
+    </footer>
+  </main>
+</div>
+
+<nav class="mobile-nav" aria-label="页面视图">
+  <button data-view="map" class="active" aria-pressed="true"><span data-icon="layers"></span>探索沙盘</button>
+  <button data-view="plan" aria-pressed="false"><span data-icon="route"></span>每日行程</button>
+  <button data-view="bookings"><span data-icon="checklist"></span>出发清单 <i class="mobile-count">0/4</i></button>
+</nav>
+
+<dialog id="detail-dialog" class="dialog detail-dialog" aria-label="景点交通与入场详情">
+  <div class="dialog-head"><span class="eyebrow">YOUR POCKET GUIDE</span><button class="icon-button dialog-close" aria-label="关闭详情" data-icon="close"></button></div>
+  <div id="dialog-place-body"></div>
+</dialog>
+
+<dialog id="booking-dialog" class="dialog" aria-label="出发前预约清单">
+  <div class="dialog-head"><span class="eyebrow">A LITTLE PREPARATION</span><button class="icon-button dialog-close" aria-label="关闭清单" data-icon="close"></button></div>
+  <h2>准备好，就出发。</h2>
+  <p class="dialog-intro">把需要提前做的事放在一起，勾选后会自动保存。</p>
+  <div class="booking-progress"><span id="booking-progress-text">已完成 0 / 4 项</span><div><i id="booking-progress-fill"></i></div></div>
+  <div id="booking-list"></div>
+  <div class="dialog-note">勾选只记录你的准备进度，不会实际预约或购票。国庆开放、限流和票种以官方当日公告为准。</div>
+</dialog>
+
+<dialog id="sources-dialog" class="dialog" aria-label="信息来源与数据边界">
+  <div class="dialog-head"><span class="eyebrow">NOTES &amp; SOURCES</span><button class="icon-button dialog-close" aria-label="关闭来源" data-icon="close"></button></div>
+  <h2>走得从容，看得明白。</h2>
+  <p class="dialog-intro">2026年10月2日至5日上海旅行手册。步行、乘车、换乘、安检和排队均为规划估算；没有接入实时班次或票务库存。</p>
+  <div id="source-list"></div>
+  <div class="dialog-note">地标尺寸、河道和路线为艺术化示意，请用地图导航确认实际路径。05:51首班仅作当前时刻参考，需在10月4日晚复核。值机、托运和登机截止时间按航空公司要求。</div>
+</dialog>
+
+<div id="toast" class="toast" role="status"></div>
+
+<noscript>
+  <p>请启用 JavaScript 查看沙盘；行程概览也保存在项目内的 README.md。</p>
+</noscript>
+
+<script src="vendor/three.min.js"></script>
+<script src="trip-data.js"></script>
+<script src="scene.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

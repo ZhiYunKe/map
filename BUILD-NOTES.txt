@@ -1,0 +1,11 @@
+# 版本要求：本项目无构建步骤，无需 Node 环境。
+# 此文件留作说明之用——Cloudflare Pages 会把无构建命令的项目当纯静态站点处理。
+#
+# 构建配置（在 Cloudflare Pages 控制台填写）：
+#   Framework preset:          None
+#   Build command:             （留空）
+#   Build output directory:    /
+#   Root directory:            （留空，若仓库根即 site 内容）
+#
+# 若你的 GitHub 仓库里 site 位于子目录，则 Root directory 填 site，
+# Build output directory 保持 /。
