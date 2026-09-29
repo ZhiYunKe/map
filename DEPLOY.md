@@ -98,21 +98,40 @@ npx --yes serve -l 8849 .
 
 ## 4. 方案二：Cloudflare Pages（推荐长期使用）
 
+> **本项目已就绪**：代码已推送到 `https://github.com/ZhiYunKe/map.git`（分支 `main`），
+> 可直接从下面第 2 步开始操作。
+
 ### 4.1 通过 Git 自动部署
 
-1. 把 `site/` 内容推到 GitHub 仓库（例如 `shanghai-atlas`）
-2. 登录 <https://dash.cloudflare.com/> → `Workers & Pages` → `Create` → `Pages` → `Connect to Git`
-3. 选择仓库，配置构建参数：
+1. ~~把 `site/` 内容推到 GitHub 仓库~~ —— **已完成**，仓库为 `ZhiYunKe/map`，分支 `main`
+2. 登录 <https://dash.cloudflare.com/> → 左侧 `Workers & Pages` → `Create` → 选 `Pages` 标签 → `Connect to Git`
+3. 首次使用需授权 Cloudflare 访问 GitHub：选 `Only select repositories`，只勾选 `map` 这一个仓库（最小权限原则）
+4. 选择仓库 `map`，配置构建参数：
 
    | 配置项 | 值 |
    | --- | --- |
+   | Project name | `shanghai-atlas`（或你喜欢的名字，决定最终域名） |
+   | Production branch | `main` |
    | Framework preset | `None` |
-   | Build command | *（留空）* |
-   | Build output directory | `/` 或仓库根目录 |
-   | Root directory | *（留空，或填 `site` 若仓库含上层目录）* |
+   | Build command | *（留空，不要填任何内容）* |
+   | Build output directory | `/` |
+   | Root directory | *（留空）* |
+   | Environment variables | *（不需要）* |
 
-4. 点 `Save and Deploy`，约 30 秒后得到 `https://<project>.pages.dev`
-5. 之后每次 `git push` 自动重新部署
+5. 点 `Save and Deploy`，约 30 秒后得到 `https://<Project name>.pages.dev`
+6. 之后本地改完内容，`git add . && git commit -m "更新" && git push`，Cloudflare 自动重新部署
+
+> **关键提醒**：`Build command` 必须**留空**。本项目是纯静态站点，
+> 若填了 `npm run build` 之类的命令会因找不到 `package.json` 而构建失败。
+
+### 4.2 通过命令行直传（无需 Git）
+
+```bash
+npm install -g wrangler
+wrangler login
+cd site
+wrangler pages deploy . --project-name shanghai-atlas
+```
 
 ### 4.2 通过命令行直传（无需 Git）
 
@@ -124,6 +143,16 @@ wrangler pages deploy . --project-name shanghai-atlas
 ```
 
 **绑定自定义域名**：`Pages 项目 → Custom domains → Set up a custom domain`，按提示在 DNS 添加 CNAME 记录。Cloudflare 会自动签发 SSL 证书。
+
+### 4.3 上线后验证
+
+部署完成会拿到形如 `https://shanghai-atlas.pages.dev` 的网址。打开后确认：
+
+- 3D 沙盘正常渲染（不是「无法显示 3D」的降级提示）
+- 手机访问时底部出现三项导航
+- 控制台无报错（F12 → Console）
+
+分享给朋友时提醒一句：**若在微信里打开是空白，点右上角「…」→ 在浏览器中打开**。微信内置浏览器对 WebGL 限制较多。
 
 ---
 
